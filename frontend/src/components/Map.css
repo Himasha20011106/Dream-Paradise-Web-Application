@@ -1,0 +1,15 @@
+MapContainer{
+    border-radius: 20px;
+}
+
+Popup{
+    color: #BF9A33;
+}
+
+.leaflet-control-zoom {
+    top: 300px; 
+    left: 10px; 
+}
+  
+  
+  

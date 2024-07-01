@@ -1,0 +1,83 @@
+.testimonial-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .testimonial-container {
+    display: flex;
+    padding-left: 80px;
+    padding-right: 80px;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .testimonial {
+    flex: 1;
+    min-width: 50%; 
+    box-sizing: border-box;
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  .testimonial:hover {
+    transform: scale(1.05);
+  }
+
+  .testimonial span{
+    font-size: 80px;
+    margin-right: 5px;
+    color: #BF9A33;
+  }
+  
+  .testimonial p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .testimonial h2 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .controls {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  
+  .controls button {
+    box-shadow: 0 2px 10px rgba(0, 0.8, 0.8, 0.8);
+    background-color: #fff;
+    border: none;
+    color: #000;
+    font-size: 30px;
+    cursor: pointer;
+    padding-bottom: 50px;
+    width: 40px;
+    height: 0px;
+    border-radius: 100%;
+    margin: 0 40px;
+  }
+  
+  .controls button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+  }
+  
+  .quote::before {
+    content: '“';
+    color: #BF9A33; 
+    font-size: 68px; 
+    margin-right: 5px;
+  }
+
+  footer{
+    font-size: 34px;
+    font-weight: bolder;
+  }
