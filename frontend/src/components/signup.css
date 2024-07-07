@@ -30,23 +30,55 @@
   }
   
   .left-side {
-    background-color: #f0f0f0;
+    background: url(../img/SignupImage.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     text-align: center;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  .left-side:before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .right-side{
+    margin-left: 12px;
+    animation: fadeIn 1s ease-in-out forwards;
   }
   
   .left-side h2 {
     font-size: 2em;
-    margin-bottom: 10px;
+    margin-bottom: 400px;
+    font-weight: bolder;
   }
   
   .left-side p {
-    font-size: 1.5em;
-    color: #555;
+    font-size: 30px;
+    font-weight: bolder;
+    color: #058490;
+    margin-bottom: 340px;
   }
   
   .right-side h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 26px;
+    margin-top: -20px;
+  }
+
+  .line1{
+    color: #058490;
+    margin-top: 0px;
+    font-size: 27px;
+    
+  }
+
+  .line1 span{
+    font-size: 28px;
+    font-weight: bolder;
+    color: #BF9A33;
   }
   
   .signup-form {
@@ -65,9 +97,10 @@
   }
   
   .signup-btn {
+    font-weight: bolder;
     padding: 10px;
-    font-size: 1em;
-    background-color: #007bff;
+    font-size: 18px;
+    background-color: #000;
     color: white;
     border: none;
     border-radius: 5px;
@@ -76,7 +109,7 @@
   }
   
   .signup-btn:hover {
-    background-color: #0056b3;
+    background-color: #BF9A33;
   }
   
   .close-signup {
@@ -95,5 +128,38 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px); 
     }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      opacity: 0;
+      transform: translateX(-100%); /* Slide in from the left */
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translate(-50%, -60%);
+      opacity: 0;
+    }
+    to {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
   

@@ -13,7 +13,7 @@ const ImageSlider = ({ images }) => {
   const startAutoSlide = () => {
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change image every 3 seconds
+    }, 3000);
   };
 
   const stopAutoSlide = () => {

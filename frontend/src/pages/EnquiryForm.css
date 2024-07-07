@@ -1,0 +1,135 @@
+.enquiry-modal {
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 150px;
+    padding: 20px;
+}
+
+.enquiry-modal-content {
+    border-radius: 20px;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+.enquiry-modal-content h1{
+    text-align: center;
+}
+
+.close-enquiry {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-enquiry:hover,
+.close-enquiry:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.Inquiry-Form-Textarea {
+    padding-top: 10px;
+    width: 97%;
+    padding-left: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    height: 120px;
+    resize: none;
+}
+
+.Inquiry-Form-Input {
+    padding-right: 8px;
+    width: 96%;
+    height: 35px;
+    padding-left: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+label {
+    bottom: 5px;
+    font-weight: 600;
+}
+
+.Enquiry-h1{
+    text-align: center;
+    color: #BF9A33;
+}
+
+.Enquiry-p{
+    margin-top: -5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.name {
+    display: flex;
+    margin-right: -10px;
+}
+
+.Contact-Form-Input-Left {
+    margin-right: 5px;
+    width: 100%;
+    padding: 0px;
+    padding-left: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.Contact-Form-Input-Right {
+    margin-left: 5px;
+    width: 100%;
+    padding: 10px;
+    padding-left: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.InputFieldDropdown{
+    margin-top: 5px;
+    height: 38px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    background-color: #fefefe;
+    margin-bottom: 9px;
+}
+
+.enquiry-btn {
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.enquiry-btn:hover {
+    background-color: #BF9A33;
+}

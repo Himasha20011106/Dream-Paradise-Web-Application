@@ -1,0 +1,43 @@
+.autoslider {
+    position: relative;
+    width: 100%;
+    height: 550px; 
+    overflow: hidden;
+  }
+
+  .slides:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .slides {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+  }
+  
+  .slides.active {
+    opacity: 1;
+  }
+
+  /* Slide-in animation keyframes */
+    @keyframes slideIn {
+    from {
+      transform: translate(-50%, -60%);
+      opacity: 0;
+    }
+    to {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
+  

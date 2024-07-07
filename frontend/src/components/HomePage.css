@@ -46,10 +46,12 @@ a{
 }
 
 .user-dropdown-toggle {
+  margin-right: 60px;
   cursor: pointer;
 }
 
 .user-dropdown {
+  margin-right: 30px;
   position: absolute;
   top: 100%;
   right: 0;
@@ -59,6 +61,21 @@ a{
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1001; 
   display: none; 
+}
+
+.dropdown-account:hover{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.dropdown-logout:hover{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.user-icon {
+  height: 20px;
+  width: 30px;
 }
 
 .user-info:hover .user-dropdown {
@@ -143,38 +160,26 @@ a{
 /* Hero section styles */
 .hero {
   margin-top: 38px;
-  background-image: url('../img/HomePageImage1.jpg');
-  box-shadow: 0 2px 10px rgba(0, 0, 0.5, 0.5);
   background-size: cover;
   background-position: center;
-  height: 600px;
+  height: 540px;
   position: relative;
-}
-
-.hero:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .hero-content {
   font-size: 35px;
-  font-weight: bold;
+  font-weight: bolder;
   position: absolute;
-  top: 72%;
+  top: 71%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-shadow: 0 2px 10px rgba(0, 0.8, 0.8, 0.8);
+  text-shadow: 0 2px 10px rgba(1, 1, 1, 1);
   text-align: center;
   color: #BF9A33;
   animation: slideIn 2s forwards;
 }
 
-.enquiry-btn {
+.home-enquiry-btn {
   background-color: #020002;
   color: #fff;
   font-weight: bold;
@@ -182,9 +187,10 @@ a{
   border: none;
   padding: 15px 25px;
   cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0.5, 0.5, 0.8);
 }
 
-.enquiry-btn:hover {
+.home-enquiry-btn:hover {
   background-color: #BF9A33;
   color: #000;
   font-weight: bold;
@@ -384,6 +390,7 @@ a{
   margin-right: 120px;
   font-size: 16px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 .contact-details h3{
@@ -419,7 +426,7 @@ a{
   padding-left: 10px;
   padding-top: 10px;
   width: 490px;
-  height: 168.5px;
+  height: 165px;
   margin-bottom: 15px;
   padding-left: 10px;
   border-radius: 10px;
@@ -437,6 +444,7 @@ a{
   margin-top: 20px;
   padding: 14px 27px;
   cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0.5, 0.5, 0.8);
 }
 
 .contactus-btn:hover{
@@ -488,7 +496,7 @@ a{
 }
 
 .footer-section-items-address h4{
-  margin-left: 65px;
+  margin-left: 70px;
   color: #BF9A33;
 }
 
@@ -497,7 +505,7 @@ a{
 }
 
 .footer-section-items-call h4{
-  margin-left: 40px;
+  margin-left: 45px;
   color: #BF9A33;
 }
 
@@ -506,7 +514,7 @@ a{
 }
 
 .footer-section-items-email h4{
-  margin-left: 65px;
+  margin-left: 70px;
   color: #BF9A33;
 }
 
@@ -552,7 +560,7 @@ a{
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px); /* Optional: Adds a slight upward movement */
+    transform: translateY(20px); 
   }
   to {
     opacity: 1;

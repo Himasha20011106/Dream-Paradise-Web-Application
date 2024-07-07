@@ -1,0 +1,123 @@
+/* WeddingEnquiryForm.css */
+
+/* General form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Wedding-Inquiry-Form-Input, 
+.Inquiry-Form-Textarea {
+    padding-right: 30px;
+    width: 96%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.Wedding-Inquiry-Form-Input:focus,
+.Inquiry-Form-Textarea:focus {
+    border-color: #BF9A33;
+    outline: none;
+    box-shadow: 0 0 5px rgba(191, 154, 51, 0.5);
+}
+
+.InputFieldDropdownVenue {
+    padding-right: 30px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.InputFieldDropdownItem {
+    padding-right: 30px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.InputFieldDropdownVenue:focus {
+    border-color: #BF9A33;
+    outline: none;
+    box-shadow: 0 0 5px rgba(191, 154, 51, 0.5);
+}
+
+.InputFieldDropdownItem:focus {
+    border-color: #BF9A33;
+    outline: none;
+    box-shadow: 0 0 5px rgba(191, 154, 51, 0.5);
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+textarea.Inquiry-Form-Textarea {
+    height: 100px;
+    resize: none;
+}
+
+/* Styling for the heading */
+.Enquiry-h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #BF9A33;
+    margin-bottom: 20px;
+}
+
+/* Flexbox layout for grouped fields */
+.wedding-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.wedding-flex-names {
+    width: 100%;
+    display: flex;
+}
+
+.wedding-flex-bridename {
+    width: 258px;
+    margin-right: 25px;
+}
+
+.wedding-flex-groomname {
+    width: 258px;
+}
+
+.wedding-flex > div {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Button styling */
+button[type="submit"] {
+    background-color: #000;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #BF9A33;
+}
+
+/* Checkbox layout */
+div > input[type="checkbox"] {
+    margin-right: 2px;
+    margin-left: 25px;
+}
+

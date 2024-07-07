@@ -1,19 +1,51 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './login.css';
 import Logo from "../img/Logo.png";
+import SignupModal from './signup';
+import axios from 'axios';
 
 function Login({ show, handleClose }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showSignupModal, setShowSignupModal] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
+
+    try {
+      const response = await axios.post('http://localhost:3501/login', { email, password });
+      const user = response.data;
+
+      localStorage.setItem('user', JSON.stringify(user));
+
+      handleClose();
+      if (user.role === 'admin') {
+        navigate('/admin'); // Navigate to admin page
+      } else {
+        navigate('/'); // Navigate to logged home page
+        window.location.reload(); // Reload the page to update state
+        alert('Hello! Welcome to DreamParadise.');
+      }
+    } catch (error) {
+      alert(error.response?.data?.message || 'Entered username or password is incorrect');
+      setEmail('');
+      setPassword('');
+    }
   };
 
   if (!show) {
     return null;
   }
+
+  const handleSignupClick = () => {
+    setShowSignupModal(true);
+  };
+
+  const handleCloseSignupModal = () => {
+    setShowSignupModal(false);
+  };
 
   return (
     <div className="modal">
@@ -21,7 +53,6 @@ function Login({ show, handleClose }) {
         <span className="close" onClick={handleClose}>&times;</span>
         <div className="login-header">
           <img className="login-logo" src={Logo} alt="Logo" />
-          <h3 className="login-name">DreamParadise</h3>
           <p className="login-welcome">Welcome Back. You are just one step away from your beautiful dream.</p>
         </div>
         <form onSubmit={handleSubmit} className="login-form">
@@ -57,12 +88,10 @@ function Login({ show, handleClose }) {
               <a href="#"><i className="fab fa-linkedin-in"></i></a>
             </div>
           </div>
-          <div className="signup-link">
-            <p>Don’t have an account?</p>
-            <a href="#">Sign Up</a>
-          </div>
         </form>
       </div>
+
+      <SignupModal show={showSignupModal} handleClose={handleCloseSignupModal} />
     </div>
   );
 }

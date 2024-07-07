@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './HomePage.css';
 import Logo from "../img/Logo.png";
 import Service1 from "../img/services1.png";
@@ -13,20 +13,44 @@ import Gallery4 from "../img/Gallery4.jpg";
 import Gallery5 from "../img/Gallery5.jpg";
 import Gallery6 from "../img/Gallery6.jpg";
 import Gallery7 from "../img/Gallery7.jpg";
+import HomePageImage1 from "../img/HomePageImage1.jpg";
+import HomePageImage2 from "../img/HomePageImage2.jpg";
+import HomePageImage3 from "../img/HomePageImage3.jpg";
+import HomePageImage4 from "../img/HomePageImage4.jpg";
+import HomePageImage5 from "../img/HomePageImage5.jpg";
+import HomePageImage6 from "../img/HomePageImage6.jpg";
 import IdeasSection from "../img/ClientIdeas.jpeg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faUser, faUserCircle, faShoppingBag, faHeart, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import ImageSlider from './ImageSlider';
+import AutoImageSlider from './AutoImageSlider';
 import TestimonialSlider from './TestimonialSlider';
 import Map from './Map'; 
 import LoginModal from './login';
 import SignupModal from './signup';
+import { useNavigate } from 'react-router-dom';
+import EnquiryModal from '../pages/EnquiryForm';
+import WeddingEnquiryModal from '../pages/WeddingEnquiryForm';
 
 function HomePage() {
+  const [isVisibleEnquiryModal, setIsVisibleEnquiryModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
+  const [showEnquiryModal, setShowEnquiryModal] = useState(false);
+  const [showWeddingEnquiryModal, setShowWeddingEnquiryModal] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [username, setUsername] = useState('');
+  const navigate = useNavigate();
+
+  const homePageImages = [
+    HomePageImage1,
+    HomePageImage2,
+    HomePageImage3,
+    HomePageImage4,
+    HomePageImage5,
+    HomePageImage6
+  ];
 
   const galleryImages = [
     Gallery1,
@@ -38,6 +62,16 @@ function HomePage() {
     Gallery7
   ];
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      setIsLoggedIn(true);
+      setUsername(user.name);
+      setIsLoggedIn(false);
+    }
+  }, []);
+
   const handleLoginClick = () => {
     setShowModal(true);
   };
@@ -46,9 +80,35 @@ function HomePage() {
     setShowSignupModal(true);
   };
 
+  const handleEnquiryClick = () => {
+    setShowEnquiryModal(true);
+  };
+
+  const handleWeddingEnquiryClick = () => {
+    setShowWeddingEnquiryModal(true);
+  }
+
   const handleCloseModal = () => {
     setShowModal(false);
+  };
+
+  const handleCloseSignupModal = () => {
     setShowSignupModal(false);
+  };
+
+  const handleCloseEnquiryModal = () => {
+    setShowEnquiryModal(false);
+  };
+
+  const handleCloseWeddingEnquiryModal = () => {
+    setShowWeddingEnquiryModal(false);
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setIsLoggedIn(true);
+    setUsername('');
+    navigate('/');
   };
 
   return (
@@ -69,37 +129,37 @@ function HomePage() {
         {isLoggedIn ? (
           /*<div className="user-info">
             <span className="user-dropdown-toggle">
-              Hi Himasha Ka...
+              <FontAwesomeIcon className="user-icon" icon={faUserCircle}/> Hi {username}
             </span>
             <div className="user-dropdown">
-              <a href="#"><FontAwesomeIcon icon={faUser} /> Account</a>
+              <a href="#" className='dropdown-account'><FontAwesomeIcon icon={faUser} /> Account</a>
               <a href="#"><FontAwesomeIcon icon={faUserCircle} /> Profile</a>
               <a href="#"><FontAwesomeIcon icon={faShoppingBag} /> Orders</a>
               <a href="#"><FontAwesomeIcon icon={faHeart} /> Wishlist</a>
-              <a href="#"><FontAwesomeIcon icon={faSignOutAlt} /> Logout</a>
+              <a href="#" className='dropdown-logout' onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt} /> Logout</a>
             </div>
           </div>*/
           <div className="guest-info">
-          <a href="#" onClick={handleLoginClick}>Login</a>
-          <span> | </span>
-          <a href="#" onClick={handleSignupClick}>Register</a>
-        </div>
+            <a href="#" onClick={handleLoginClick}>Login</a>
+            <span> | </span>
+            <a href="#" onClick={handleSignupClick}>Register</a>
+          </div>
         ) : (
           /*<div className="guest-info">
-            <a href="#">Login</a>
+            <a href="#" onClick={handleLoginClick}>Login</a>
             <span> | </span>
-            <a href="#">Register</a>
+            <a href="#" onClick={handleSignupClick}>Register</a>
           </div>*/
           <div className="user-info">
             <span className="user-dropdown-toggle">
-              Hi Himasha Ka...
+              <FontAwesomeIcon className="user-icon" icon={faUserCircle}/> Hi {username}
             </span>
             <div className="user-dropdown">
-              <a href="#"><FontAwesomeIcon icon={faUser} /> Account</a>
+              <a href="#" className='dropdown-account'><FontAwesomeIcon icon={faUser} /> Account</a>
               <a href="#"><FontAwesomeIcon icon={faUserCircle} /> Profile</a>
               <a href="#"><FontAwesomeIcon icon={faShoppingBag} /> Orders</a>
               <a href="#"><FontAwesomeIcon icon={faHeart} /> Wishlist</a>
-              <a href="#"><FontAwesomeIcon icon={faSignOutAlt} /> Logout</a>
+              <a href="#" className='dropdown-logout' onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt} /> Logout</a>
             </div>
           </div>
         )}
@@ -110,23 +170,37 @@ function HomePage() {
           <img src={Logo} alt="Logo" />
           <span>DreamParadise</span>
         </div>
+        {isLoggedIn ? (
         <ul className="nav-links">
-          <li><a href="#Home">HOME</a></li>
-          <li><a href="#Services">SERVICES</a></li>
-          <li><a href="#Aboutus">ABOUT US</a></li>
-          <li><a href="#Gallery">GALLERY</a></li>
-          <li><a href="#Testimonials">TESTIMONIALS</a></li>
-          <li><a href="#Contactus">CONTACT US</a></li>
-        </ul>
+            <li><a href="#Home">HOME</a></li>
+            <li><a href="#Services">SERVICES</a></li>
+            <li><a href="/about">ABOUT US</a></li>
+            <li><a href="#Gallery">GALLERY</a></li>
+            <li><a href="#Testimonials">TESTIMONIALS</a></li>
+            <li><a href="#Contactus">CONTACT US</a></li>
+          </ul>
+        ) : (
+          <ul className="nav-links">
+            <li><a href="#Home">HOME</a></li>
+            <li><a href="#Services">SERVICES</a></li>
+            <li><a href="#Aboutus">ABOUT US</a></li>
+            <li><a href="#Gallery">GALLERY</a></li>
+            <li><a href="#Testimonials">TESTIMONIALS</a></li>
+            <li><a href="#Contactus">CONTACT US</a></li>
+            <li><a href="#">PACKAGES</a></li>
+          </ul>
+        )}
       </nav>
 
       <section className="hero" id="Home">
-        <div className="hero-content">
+        <AutoImageSlider images={homePageImages} />
+        <div className="hero-content">         
           <h1>Perfect Choice for All</h1>
           <p>Your Special Events</p>
-          <button className="enquiry-btn">Enquiry Now</button>
+          <button className="home-enquiry-btn" onClick={handleEnquiryClick}>Enquiry Now</button>
         </div>
       </section>
+      
 
       <section className="services" id="Services">
         <h2>Services</h2>
@@ -135,7 +209,7 @@ function HomePage() {
             <img src={Service1} alt="Wedding Ceremony" />
             <h2>Wedding Ceremony</h2>
             <p>A wedding is once in a lifetime event, and we want yours to be one of the grandest & memorable.</p>
-            <button className="services-enquiry-btn">Enquiry Now</button>
+            <button className="services-enquiry-btn" onClick={handleWeddingEnquiryClick}>Enquiry Now</button>
           </div>
           <div className="services-box">
             <img src={Service2} alt="Corporate Events" />
@@ -227,13 +301,13 @@ function HomePage() {
 
       <section className="footer-section">
           <div className="footer-section-items-links">
-              <a className="link" href=''>HOME</a><br/><br/>
-              <a className="link" href=''>ABOUT US</a><br/><br/>
+              <a className="link" href='#Home'>HOME</a><br/><br/>
+              <a className="link" href='#Aboutus'>ABOUT US</a><br/><br/>
               <a className="link" href=''>PRIVACY POLICY</a><br/><br/>
-              <a className="link" href=''>SERVICES</a><br/><br/>
-              <a className="link" href=''>GALLERY</a><br/><br/>
-              <a className="link" href=''>TESTIMONIALS</a><br/><br/>
-              <a className="link" href=''>CONTACT US</a><br/><br/>
+              <a className="link" href='#Services'>SERVICES</a><br/><br/>
+              <a className="link" href='#Gallery'>GALLERY</a><br/><br/>
+              <a className="link" href='#Testimonials'>TESTIMONIALS</a><br/><br/>
+              <a className="link" href='#Contactus'>CONTACT US</a><br/><br/>
           </div>
           <div className="footer-section-items-address">
             <h4>Address</h4>
@@ -266,7 +340,9 @@ function HomePage() {
       <p className='Bottom'>DreamPradise Hall © 2024, All Rights Reserved. Developed by Himasha.</p>
 
       <LoginModal show={showModal} handleClose={handleCloseModal} />
-      <SignupModal show={showSignupModal} handleClose={handleCloseModal} />
+      <SignupModal show={showSignupModal} handleClose={handleCloseSignupModal} />
+      <EnquiryModal show={showEnquiryModal} handleClose={handleCloseEnquiryModal} />
+      <WeddingEnquiryModal show={showWeddingEnquiryModal} handleClose={handleCloseWeddingEnquiryModal} />
     </div>
   );
 }
